@@ -1,0 +1,217 @@
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1000;
+}
+
+.dialog-content {
+  background: #1a1a1a;
+  width: 400px;
+  max-width: 90vw;
+  height: 100%;
+  overflow-y: auto;
+  padding: 2rem;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.87);
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.close-btn:hover {
+  color: #646cff;
+}
+
+.recipe-details h2 {
+  color: rgba(255, 255, 255, 0.87);
+  margin-bottom: 1rem;
+}
+
+.recipe-detail-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.recipe-description {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.recipe-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.recipe-section {
+  margin-bottom: 1.5rem;
+}
+
+.recipe-section h3 {
+  color: rgba(255, 255, 255, 0.87);
+  margin-bottom: 0.5rem;
+}
+
+.recipe-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.recipe-section li {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.recipe-section p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+}
+
+.recipe-form h2 {
+  color: rgba(255, 255, 255, 0.87);
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.87);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  background: #2a2a2a;
+  color: rgba(255, 255, 255, 0.87);
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #646cff;
+  box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.ingredient-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.ingredient-input input {
+  flex: 1;
+}
+
+.remove-btn,
+.add-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.remove-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.remove-btn:hover {
+  background: #c82333;
+}
+
+.add-btn {
+  background: #28a745;
+  color: white;
+  margin-top: 0.5rem;
+}
+
+.add-btn:hover {
+  background: #218838;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.dialog-actions button {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.dialog-actions button[type="submit"] {
+  background: #646cff;
+  color: white;
+}
+
+.dialog-actions button[type="submit"]:hover {
+  background: #535bf2;
+}
+
+.dialog-actions button:not([type="submit"]) {
+  background: #6c757d;
+  color: white;
+}
+
+.dialog-actions button:not([type="submit"]):hover {
+  background: #5a6268;
+}
+
+.delete-btn {
+  background: #dc3545 !important;
+}
+
+.delete-btn:hover {
+  background: #c82333 !important;
+}
+
+@media (max-width: 768px) {
+  .dialog-content {
+    width: 100%;
+    max-width: 100vw;
+  }
+}
