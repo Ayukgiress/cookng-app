@@ -14,6 +14,8 @@ const AppContent = () => {
       <header className="app-header">
         <h1>Recipe App</h1>
         <div className="header-controls">
+        <div className="search-container">
+          <span className="search-icon">🔍</span>
           <input
             type="text"
             placeholder="Search recipes..."
@@ -21,6 +23,7 @@ const AppContent = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
           />
+        </div>
           <button onClick={() => setShowFavorites(!showFavorites)} className="favorites-toggle-btn">
             {showFavorites ? 'All Recipes' : '❤️ Favorites'}
           </button>
@@ -36,14 +39,15 @@ const AppContent = () => {
           <Favorite />
         ) : (
           <>
-            <div className="recipes-grid">
-              {filteredRecipes.map(recipe => (
-                <RecipeCard key={recipe.id} recipe={recipe} />
-              ))}
-            </div>
-            {filteredRecipes.length === 0 && (
+            {filteredRecipes.length > 0 ? (
+              <div className="recipes-grid">
+                {filteredRecipes.map(recipe => (
+                  <RecipeCard key={recipe.id} recipe={recipe} />
+                ))}
+              </div>
+            ) : (
               <div className="no-recipes">
-                <p>No recipes found. Try adding a new one!</p>
+                <p>No recipes found. Try adjusting your search or adding a new one!</p>
               </div>
             )}
           </>

@@ -23,6 +23,11 @@ export const RecipeProvider = ({ children }) => {
       const storedRecipes = localStorage.getItem('recipes');
       const storedFavorites = localStorage.getItem('favorites');
 
+      // Load favorites first
+      if (storedFavorites) {
+        setFavorites(JSON.parse(storedFavorites));
+      }
+
       let localRecipes = [];
       if (storedRecipes) {
         localRecipes = JSON.parse(storedRecipes);
@@ -101,10 +106,6 @@ export const RecipeProvider = ({ children }) => {
         console.error('Error fetching MealDB recipes:', error);
         setRecipes(localRecipes);
       }
-
-      if (storedFavorites) {
-        setFavorites(JSON.parse(storedFavorites));
-      }
     };
 
     loadData();
@@ -119,11 +120,21 @@ export const RecipeProvider = ({ children }) => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  const filteredRecipes = recipes.filter(recipe =>
-    recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    recipe.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    recipe.ingredients.some(ing => ing.toLowerCase().includes(searchTerm.toLowerCase()))
-  );
+  const searchWords = searchTerm.toLowerCase().split(' ').filter(word => word.trim() !== '');
+
+  const filteredRecipes = recipes.filter(recipe => {
+    if (searchWords.length === 0) return true;
+
+    const title = recipe.title.toLowerCase();
+    const description = recipe.description.toLowerCase();
+    const ingredientsText = recipe.ingredients.map(ing => ing.toLowerCase()).join(' ');
+
+    return searchWords.every(word =>
+      title.includes(word) ||
+      description.includes(word) ||
+      ingredientsText.includes(word)
+    );
+  });
 
   const addRecipe = (recipe) => {
     const newRecipe = { ...recipe, id: Date.now() };
