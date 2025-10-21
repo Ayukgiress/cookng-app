@@ -1,20 +1,21 @@
 .app {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #f4a261 0%, #e76f51 50%, #f4a261 100%);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 .app-header {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
   padding: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   position: sticky;
   top: 0;
   z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .app-header h1 {
@@ -111,11 +112,12 @@
 }
 
 .no-recipes p {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
   padding: 2rem;
   border-radius: 15px;
   backdrop-filter: blur(10px);
   display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .favorites-section {
@@ -132,13 +134,14 @@
 
 .no-favorites {
   text-align: center;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1.2rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
   padding: 2rem;
   border-radius: 15px;
   backdrop-filter: blur(10px);
   display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 @media (max-width: 768px) {

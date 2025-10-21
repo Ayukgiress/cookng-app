@@ -12,7 +12,7 @@ const AppContent = () => {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>My Recipe App</h1>
+        <h1>Recipe App</h1>
         <div className="header-controls">
           <input
             type="text"
