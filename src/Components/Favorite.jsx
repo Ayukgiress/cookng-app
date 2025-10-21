@@ -1,26 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useRecipes } from '../contexts/RecipeContext';
+import RecipeCard from '../components/RecipeCard';
 
-const Favorite = ({ favorites, removeFavorite }) => {
+const Favorite = () => {
+  const { recipes, favorites } = useRecipes();
+
+  const favoriteRecipes = recipes.filter(recipe => favorites.includes(recipe.id));
+
+  if (favoriteRecipes.length === 0) {
+    return (
+      <div className="favorites-section">
+        <h2>My Favorite Recipes</h2>
+        <p className="no-favorites">No favorite recipes yet. Start adding some! ❤️</p>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <h2>Favorite Meals</h2>
-      <ul>
-        {favorites.map((meal) => (
-          <li key={meal.idMeal}>
-            <h3>{meal.strMeal}</h3>
-            <img src={meal.strMealThumb} alt={meal.strMeal} className='favImg'/>
-            <button onClick={() => removeFavorite(meal)}>Remove from Favorites</button>
-          </li>
+    <div className="favorites-section">
+      <h2>My Favorite Recipes</h2>
+      <div className="recipes-grid">
+        {favoriteRecipes.map(recipe => (
+          <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
-      </ul>
+      </div>
     </div>
   );
-};
-
-Favorite.propTypes = {
-  favorites: PropTypes.array.isRequired,
-  removeFavorite: PropTypes.func.isRequired
 };
 
 export default Favorite;
